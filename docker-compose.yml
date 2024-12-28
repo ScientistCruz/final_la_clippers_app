@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+
+  fastapi:
+
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./pbp_snap_shot:/pbp_snap_shot
+
+    environment:
+      - APP_ENV=development
+
+
+  la-clippers-app:
+    build:
+      context: .
+      dockerfile: ./la-clippers-app/Dockerfile
+
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./la-clippers-app:/la-clippers-app
+      - /la-clippers-app/node_modules

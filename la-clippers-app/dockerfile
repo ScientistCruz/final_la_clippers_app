@@ -1,0 +1,27 @@
+# Use a Node.js image
+FROM node:18
+
+# Set the working directory
+WORKDIR /la-clippers-app
+
+# Copy package.json and package-lock.json to the working directory
+COPY ./la-clippers-app/package.json ./la-clippers-app/package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+
+# Copy the rest of the application files
+COPY . ./
+RUN npm install axios
+RUN npm install --save-dev @types/axios
+RUN npm install react-router-dom
+
+RUN echo "Node: " && node -v
+RUN echo "NPM: " && npm -v
+
+# Expose the development port
+EXPOSE 3000
+
+# Start the React app
+CMD ["npm", "run", "dev"]

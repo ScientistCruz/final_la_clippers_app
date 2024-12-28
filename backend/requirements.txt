@@ -1,0 +1,9 @@
+fastapi[standard]
+uvicorn[standard]
+pyodbc
+sqlalchemy
+pandas
+pathlib
+psycopg2>=2.8
+xmltodict
+lxml
